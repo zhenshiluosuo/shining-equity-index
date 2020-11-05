@@ -29,6 +29,13 @@ module.exports = {
                 pathRewrite: {
                     '^/sina2' : '/'
                 }
+            },
+            '/gtimg': {
+                target: 'http://qt.gtimg.cn',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/gtimg': '/'
+                }
             }
         }
     }

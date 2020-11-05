@@ -4,6 +4,9 @@ import Dashboard from "../components/Dashboard";
 import IndividualStock from "../components/IndividualStock";
 import Multi from "../components/Multi";
 import SelfSelect from "../components/SelfSelect";
+import checkbox from "../components/checkbox";
+import GoldInfo from "../components/GoldInfo";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -14,13 +17,13 @@ const routes = [
     },
     {
         path: '/IndividualStock',
-        name: 'Browse',
+        name: 'IndividualStock',
         component: IndividualStock
     },
     {
-        path: '/MyChoose',
-        name: 'Browse',
-        component: IndividualStock
+        path: '/checkbox',
+        name: 'checkbox',
+        component: checkbox
     },
     {
         path: '/SingleStock',
@@ -36,6 +39,12 @@ const routes = [
         path: '/Multi',
         name: 'Multi',
         component: Multi
+    }
+    ,
+    {
+        path: '/GoldInfo',
+        name: 'GoldInfo',
+        component: GoldInfo
     }
 ];
 

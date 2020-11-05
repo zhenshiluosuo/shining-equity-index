@@ -1,7 +1,6 @@
 <template>
     <div class="header">
-        <div id="nav-button">
-        </div>
+        <span>加入我们，聪明的投资人都在这里</span>
     </div>
 </template>
 
@@ -16,5 +15,6 @@
         width: 100%;
         height: 10%;
         background: #2b303b;
+        color: white;
     }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div id="footer">
-        <div class="box" style="flex: 3; font-size: 10px;"><span>X公网安备 110000020000xx号</span><br><span>Copyright © 2020 XXXX All Rights Reserved. XX公司版权所有</span></div>
+        <div class="box" style="flex: 3; font-size: 10px;"><span>X公网安备 110000020000xx号<br>Copyright © 2020 XXXX All Rights Reserved. XX公司版权所有</span></div>
         <div class="box" v-for="(info, index) in info_list" :key="index"><p v-bind:class="{ red : info_color_list[index] === 0, green : info_color_list[index] === 2 }">{{info}}</p></div>
     </div>
 </template>
@@ -57,6 +57,7 @@
         flex: 1 1 auto;
         flex-direction: row;
         display: flex;
+        border-top: 1px solid #c9c9c9;
     }
     .box {
         box-sizing: border-box;
@@ -64,11 +65,20 @@
         color: white;
         font-size: 14px;
         vertical-align:middle;
+        font-weight: bold;
     }
     .red {
         color: red;
     }
     .green {
         color: green;
+    }
+    span {
+        display: block;
+        vertical-align: middle;
+        text-align: center;
+        width: 100%;
+        height: 90%;
+        padding-top: 2%;
     }
 </style>

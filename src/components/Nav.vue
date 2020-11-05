@@ -4,11 +4,12 @@
             <li class="nav-li"><router-link to="/" class="router-link"><span>全景概况&#12288;></span></router-link></li>
             <li class="nav-li"><span>国内行情&#12288;></span></li>
             <li class="nav-li"><span>国际行情&#12288;></span></li>
-            <li class="nav-li"><span>黄金市场&#12288;></span></li>
-            <li class="nav-li"><span>个股诊断&#12288;></span></li>
+            <li class="nav-li"><router-link to="GoldInfo" class="router-link"><span>黄金市场&#12288;></span></router-link></li>
+            <li class="nav-li"><router-link to="IndividualStock" class="router-link"><span>个股诊断&#12288;></span></router-link></li>
             <li class="nav-li"><router-link to="SelfSelect" class="router-link"><span>我的自选&#12288;></span></router-link></li>
             <li class="nav-li"><router-link to="Multi" class="router-link"><span>多股同屏&#12288;></span></router-link></li>
             <li class="nav-li"><router-link to="" class="router-link"><span>直播讨论&#12288;></span></router-link></li>
+            <li style="width: 100%;height: 1px;background: red;"></li>
             <li class="nav-li" style="font-size: 16px"><span>使用须知&#12288;></span></li>
             <li class="nav-li" style="font-size: 16px"><span>联系我们&#12288;></span></li>
         </ul>
@@ -31,7 +32,7 @@
     }
     .nav-ul {
         margin: 0;
-        padding: 10px;
+        padding: 0;
         position: relative;
         width: 100%;
     }

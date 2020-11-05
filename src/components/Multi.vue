@@ -1,51 +1,55 @@
 <template>
     <div id="multi">
         <div id="m-select">
-            <div style="overflow: hidden">
-                <div style="float: left; margin: 10px;"><input type="text" id="m-search" v-model="search_info"/><button @click="add()" style="margin: 10px;">添加</button></div>
-            </div>
-            <div style="overflow: hidden">
-                <div v-for="(item,index) in stocks" :key="index" style="float: left; margin: 5px;"><img :src="stock_link[index]" alt=""></div>
-            </div>
+            <SearchPlus :do_value="do_value" @searchPlus-emit="add"></SearchPlus>
         </div>
         <div id="m-show">
-
+            <div v-for="item in this.stock_link" :key="item" class="show-cell">
+                <img :src="item" >
+            </div>
         </div>
     </div>
 </template>
 0
 <script>
+    import SearchPlus from "./SearchPlus";
     export default {
         name: "Multi",
         data() {
             return {
-                search_info: '',
                 stocks: [],
                 stock_name: [],
-                stock_link: []
+                stock_link: [],
+                do_value: '添加'
             }
+        },
+        components: {
+            SearchPlus
         },
         created() {
         },
         methods: {
-            add() {
-                let jys = this.search_info.slice(0,1);
+            add(v) {
+                for(let item of this.stocks) {
+                    if(item === v) return;
+                }
+
+                let jys = v.slice(0,1);
                 jys = (jys === '0' || jys === '3') ? 'sz' : (jys === '6' ? 'sh' : '');
                 if(jys.length) {
-                    this.$http.get('/sina1/list='+ 'sh' + this.search_info).then(
+                    this.$http.get('/sina1/list='+ 'sh' + v).then(
                         v => {
                             console.log(v.data);
                             console.log(v.data.slice(21,-3));
                         }
                     );
                     if(jys !== '') {
-                        this.stocks.push('sh' + this.search_info);
-                        this.stock_link.push('http://image.sinajs.cn/newchart/min/n/' + jys + this.search_info + '.gif');
+                        this.stocks.push(v);
+                        this.stock_link.push('http://image.sinajs.cn/newchart/min/n/' + jys + v + '.gif');
                     }
                 } else {
                     alert('输入数据格式有误！')
                 }
-                this.search_info = '';
             }
         }
     }
@@ -54,5 +58,10 @@
 <style scoped>
     #m-search {
 
+    }
+    .show-cell {
+        float: left;
+        width: 545px;
+        height: 300px;
     }
 </style>

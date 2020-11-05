@@ -17,8 +17,8 @@
                     <div class="d-choose" @mouseover="selectStyle1()" :class="{ active: c1 }">板块流出</div>
                 </div>
                 <ul>
-                    <li style="color: red" v-for="(item, index) in c_list[0][0]" :key="index" v-show="c1 === 0"><span>{{item[0]}}</span><span>{{item[1] + '万'}}</span></li>
-                    <li style="color: green" v-for="(item, index) in c_list[0][1]" :key="index" v-show="c1 === 1"><span>{{item[0]}}</span><span>{{item[1] + '万'}}</span></li>
+                    <li style="color: red" v-for="(item) in c_list[0][0]" :key="item[0]" v-show="c1 === 0"><span>{{item[0]}}</span><span>{{item[1] + '万'}}</span></li>
+                    <li style="color: green" v-for="(item) in c_list[0][1]" :key="item[0]" v-show="c1 === 1"><span>{{item[0]}}</span><span>{{item[1] + '万'}}</span></li>
                 </ul>
             </div>
             <div id="stock-money-flow" class="d-block">
@@ -27,8 +27,8 @@
                     <div class="d-choose" @mouseover="selectStyle2()" :class="{ active: c2 }">个股流出</div>
                 </div>
                 <ul>
-                    <li style="color: red" v-for="(item, index) in c_list[1][0]" :key="index" v-show="c2 === 0"><span>{{item[0]}}</span><span>{{item[1] + '万'}}</span></li>
-                    <li style="color: green" v-for="(item, index) in c_list[1][1]" :key="index" v-show="c2 === 1"><span>{{item[0]}}</span><span>{{item[1] + '万'}}</span></li>
+                    <li style="color: red" v-for="(item) in c_list[1][0]" :key="item[0]" v-show="c2 === 0"><span>{{item[0]}}</span><span>{{item[1] + '万'}}</span></li>
+                    <li style="color: green" v-for="(item) in c_list[1][1]" :key="item[0]" v-show="c2 === 1"><span>{{item[0]}}</span><span>{{item[1] + '万'}}</span></li>
                 </ul>
             </div>
             <div id="plate-rate" class="d-block">
@@ -37,8 +37,8 @@
                     <div class="d-choose" @mouseover="selectStyle3()" :class="{ active: c3 }">板块跌幅</div>
                 </div>
                 <ul>
-                    <li style="color: red" v-for="(item, index) in c_list[2][0]" :key="index" v-show="c3 === 0"><span>{{item[0]}}</span><span>{{item[1]}}</span></li>
-                    <li style="color: green" v-for="(item, index) in c_list[2][1]" :key="index" v-show="c3 === 1"><span>{{item[0]}}</span><span>{{item[1]}}</span></li>
+                    <li style="color: red" v-for="item in c_list[2][0]" :key="item[0]" v-show="c3 === 0"><span>{{item[0]}}</span><span>{{item[1]}}</span></li>
+                    <li style="color: green" v-for="item in c_list[2][1]" :key="item[0]" v-show="c3 === 1"><span>{{item[0]}}</span><span>{{item[1]}}</span></li>
                 </ul>
             </div>
             <div id="stock-rate" class="d-block">
@@ -47,8 +47,8 @@
                     <div class="d-choose" @mouseover="selectStyle4()" :class="{ active: c4 }">个股跌幅</div>
                 </div>
                 <ul>
-                    <li style="color: red" v-for="(item, index) in c_list[3][0]" :key="index" v-show="c4 === 0"><span>{{item[0]}}</span><span>{{item[1]}}</span></li>
-                    <li style="color: green" v-for="(item, index) in c_list[3][1]" :key="index" v-show="c4 === 1"><span>{{item[0]}}</span><span>{{item[1]}}</span></li>
+                    <li style="color: red" v-for="item in c_list[3][0]" :key="item[0]" v-show="c4 === 0"><span>{{item[0]}}</span><span>{{item[1]}}</span></li>
+                    <li style="color: green" v-for="item in c_list[3][1]" :key="item[0]" v-show="c4 === 1"><span>{{item[0]}}</span><span>{{item[1]}}</span></li>
                 </ul>
             </div>
         </div>
