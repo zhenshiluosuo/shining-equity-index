@@ -291,7 +291,6 @@
                 };
                 let myChart = this.$echarts.init(this.$refs.mychart);
                 // 使用刚指定的配置项和数据显示图表。
-                console.log(myChart, this.$refs.mychart);
                 myChart.setOption(option);
             }
         },

@@ -37,8 +37,8 @@
                 <div id="individual-stock-show-info">
                     <div style="height: 15%;width: 100%;">
                         <div style="height: 40%;width: 100%; vertical-align:middle;">
-                            <span style="display: inline-block; width: 40%; height: 1.5em; font-size: 1.5em; line-height: 1.5em;">{{stock_num}}</span>
-                            <span style="display: inline-block; width: 60%; height: 1.5em; font-size: 1.5em; line-height: 1.5em;">{{stock_data[0]}}</span>
+                            <span style="display: inline-block; width: 50%; height: 1.5em; font-size: 1.5em; line-height: 1.5em;">{{stock_num}}</span>
+                            <span style="display: inline-block; width: 50%; height: 1.5em; font-size: 1.5em; line-height: 1.5em;">{{stock_data[1]}}</span>
                         </div>
                         <div style="height: 60%; width: 100%;">
                             <div style="display: inline-block; width: 50%;">
@@ -46,155 +46,184 @@
                                 <span>{{stock_data[3]}}</span>
                             </div>
                             <div style="display: inline-block; width: 50%;">
-                                <span style="display: inline-block; width: 100%;height: 50%;">{{(parseFloat(stock_data[2]) - parseFloat(stock_data[3])).toFixed(2)}}</span>
-                                <span style="display: inline-block; width: 100%;height: 50%;">{{(parseFloat(stock_data[2]) - parseFloat(stock_data[3]) / parseFloat(stock_data[2]) * 100).toFixed(2)}}</span>
+                                <span style="display: inline-block; width: 100%;height: 50%;">{{stock_data[32] + '%'}}</span>
+                                <span style="display: inline-block; width: 100%;height: 50%;">{{stock_data[31]}}</span>
                             </div>
                         </div>
                     </div>
-                    <div style="height: 35%; width: 98%; box-sizing: border-box; margin: 0 1%;border: 1px solid #2c3e50; border-radius: 5px;clear: both;">
+                    <div style="height: 20%; width: 98%; box-sizing: border-box; margin: 0 1%;border: 1px solid #2c3e50; border-radius: 5px;clear: both;">
                         <div style="position: relative; float: left; height: 100%;width: 50%;">
                             <div class="stock-apply">
                                 <span class="stock-apply-info stock-apply-info-head">买一</span>
+                                <span class="stock-apply-info">{{stock_data[9]}}</span>
                                 <span class="stock-apply-info">{{stock_data[10]}}</span>
-                                <span class="stock-apply-info">{{stock_data[11]}}</span>
                             </div>
                             <div class="stock-apply">
                                 <span class="stock-apply-info stock-apply-info-head">买二</span>
+                                <span class="stock-apply-info">{{stock_data[11]}}</span>
                                 <span class="stock-apply-info">{{stock_data[12]}}</span>
-                                <span class="stock-apply-info">{{stock_data[13]}}</span>
                             </div>
                             <div class="stock-apply">
                                 <span class="stock-apply-info stock-apply-info-head">买三</span>
+                                <span class="stock-apply-info">{{stock_data[13]}}</span>
                                 <span class="stock-apply-info">{{stock_data[14]}}</span>
-                                <span class="stock-apply-info">{{stock_data[15]}}</span>
                             </div>
                             <div class="stock-apply">
                                 <span class="stock-apply-info stock-apply-info-head">买四</span>
+                                <span class="stock-apply-info">{{stock_data[15]}}</span>
                                 <span class="stock-apply-info">{{stock_data[16]}}</span>
-                                <span class="stock-apply-info">{{stock_data[17]}}</span>
                             </div>
                             <div class="stock-apply">
                                 <span class="stock-apply-info stock-apply-info-head">买五</span>
+                                <span class="stock-apply-info">{{stock_data[17]}}</span>
                                 <span class="stock-apply-info">{{stock_data[18]}}</span>
-                                <span class="stock-apply-info">{{stock_data[19]}}</span>
                             </div>
                         </div>
                         <div style="position: relative; float: left; height: 100%;width: 50%;">
                             <div class="stock-apply">
                                 <span class="stock-apply-info stock-apply-info-head">卖一</span>
+                                <span class="stock-apply-info">{{stock_data[19]}}</span>
                                 <span class="stock-apply-info">{{stock_data[20]}}</span>
-                                <span class="stock-apply-info">{{stock_data[21]}}</span>
                             </div>
                             <div class="stock-apply">
                                 <span class="stock-apply-info stock-apply-info-head">卖二</span>
+                                <span class="stock-apply-info">{{stock_data[21]}}</span>
                                 <span class="stock-apply-info">{{stock_data[22]}}</span>
-                                <span class="stock-apply-info">{{stock_data[23]}}</span>
                             </div>
                             <div class="stock-apply">
                                 <span class="stock-apply-info stock-apply-info-head">卖三</span>
+                                <span class="stock-apply-info">{{stock_data[23]}}</span>
                                 <span class="stock-apply-info">{{stock_data[24]}}</span>
-                                <span class="stock-apply-info">{{stock_data[25]}}</span>
                             </div>
                             <div class="stock-apply">
                                 <span class="stock-apply-info stock-apply-info-head">卖四</span>
+                                <span class="stock-apply-info">{{stock_data[25]}}</span>
                                 <span class="stock-apply-info">{{stock_data[26]}}</span>
-                                <span class="stock-apply-info">{{stock_data[27]}}</span>
                             </div>
                             <div class="stock-apply">
                                 <span class="stock-apply-info stock-apply-info-head">卖五</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[29]}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="height: 3%;"></div>
-                    <div style="height: 45%; width: 98%; box-sizing: border-box; margin:0 1%;border: 1px solid #2c3e50; border-radius: 5px;clear: both;">
-                        <div style="position: relative; float: left; height: 100%;width: 50%;">
-                            <div class="stock-apply1">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1 individual-stock-color">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1 individual-stock-color">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1 individual-stock-color">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1 individual-stock-color">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1 individual-stock-color">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                        </div>
-                        <div style="position: relative; float: left; height: 100%;width: 50%;">
-                            <div class="stock-apply1 individual-stock-color">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1 individual-stock-color">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1 individual-stock-color">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1 individual-stock-color">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1 individual-stock-color">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
-                            </div>
-                            <div class="stock-apply1">
-                                <span class="stock-apply-info">{{stock_data[28]}}</span>
+                                <span class="stock-apply-info">{{stock_data[27]}}</span>
                                 <span class="stock-apply-info">{{stock_data[28]}}</span>
                             </div>
                         </div>
                     </div>
-                    <div style="height: 2%;"></div>
+                    <div style="height: 30%; width: 98%; box-sizing: border-box; margin:0 1%; border: 1px solid #2c3e50; border-radius: 5px; clear: both;">
+                        <div style="height: 100%; width: 45%; position: relative; float: left;">
+                            <div class="stock-apply2">
+                                <span class="stock-apply-info stock-apply-info-head">主力流入</span>
+                                <span class="stock-apply-info">{{stock_data1[1] + '万元'}}</span>
+                            </div>
+                            <div class="stock-apply2">
+                                <span class="stock-apply-info stock-apply-info-head">主力流出</span>
+                                <span class="stock-apply-info">{{stock_data1[2] + '万元'}}</span>
+                            </div>
+                            <div class="stock-apply2">
+                                <span class="stock-apply-info stock-apply-info-head">主力净流入</span>
+                                <span class="stock-apply-info">{{stock_data1[3] + '万元'}}</span>
+                            </div>
+                            <div class="stock-apply2">
+                                <span class="stock-apply-info stock-apply-info-head">散户流入</span>
+                                <span class="stock-apply-info">{{stock_data1[5] + '万元'}}</span>
+                            </div>
+                            <div class="stock-apply2">
+                                <span class="stock-apply-info stock-apply-info-head">散户流出</span>
+                                <span class="stock-apply-info">{{stock_data1[6] + '万元'}}</span>
+                            </div>
+                            <div class="stock-apply2">
+                                <span class="stock-apply-info stock-apply-info-head">散户净流入</span>
+                                <span class="stock-apply-info">{{stock_data1[7] + '万元'}}</span>
+                            </div>
+                        </div>
+                        <div style="height: 100%; width: 55%; position: relative; float: left;">
+                            <PieChart style="height: 100%; width: 100%"></PieChart>
+                        </div>
+                    </div>
+                    <div style="height: 35%; width: 98%; box-sizing: border-box; margin:0 1%;border: 1px solid #2c3e50; border-radius: 5px;clear: both;">
+                        <div style="position: relative; float: left; height: 100%;width: 50%;">
+                            <div class="stock-apply1">
+                                <span class="stock-apply-info">当前价格</span>
+                                <span class="stock-apply-info">{{stock_data[3]}}</span>
+                            </div>
+                            <div class="stock-apply1 individual-stock-color">
+                                <span class="stock-apply-info">昨收</span>
+                                <span class="stock-apply-info">{{stock_data[4]}}</span>
+                            </div>
+                            <div class="stock-apply1">
+                                <span class="stock-apply-info">今开</span>
+                                <span class="stock-apply-info">{{stock_data[5]}}</span>
+                            </div>
+                            <div class="stock-apply1 individual-stock-color">
+                                <span class="stock-apply-info">成交量</span>
+                                <span class="stock-apply-info">{{stock_data[6]}}</span>
+                            </div>
+                            <div class="stock-apply1">
+                                <span class="stock-apply-info">外盘</span>
+                                <span class="stock-apply-info">{{stock_data[7]}}</span>
+                            </div>
+                            <div class="stock-apply1 individual-stock-color">
+                                <span class="stock-apply-info">内盘</span>
+                                <span class="stock-apply-info">{{stock_data[8]}}</span>
+                            </div>
+                            <div class="stock-apply1">
+                                <span class="stock-apply-info">最高</span>
+                                <span class="stock-apply-info">{{stock_data[33]}}</span>
+                            </div>
+                            <div class="stock-apply1 individual-stock-color">
+                                <span class="stock-apply-info">最低</span>
+                                <span class="stock-apply-info">{{stock_data[34]}}</span>
+                            </div>
+                            <div class="stock-apply1">
+                                <span class="stock-apply-info">成交量(手)</span>
+                                <span class="stock-apply-info">{{stock_data[36]}}</span>
+                            </div>
+                            <div class="stock-apply1 individual-stock-color">
+                                <span class="stock-apply-info">成交额(万)</span>
+                                <span class="stock-apply-info">{{stock_data[37]}}</span>
+                            </div>
+                        </div>
+                        <div style="position: relative; float: left; height: 100%;width: 50%;">
+                            <div class="stock-apply1 individual-stock-color">
+                                <span class="stock-apply-info">换手率</span>
+                                <span class="stock-apply-info">{{stock_data[38]}}</span>
+                            </div>
+                            <div class="stock-apply1">
+                                <span class="stock-apply-info">市盈率</span>
+                                <span class="stock-apply-info">{{stock_data[39]}}</span>
+                            </div>
+                            <div class="stock-apply1 individual-stock-color">
+                                <span class="stock-apply-info">最高</span>
+                                <span class="stock-apply-info">{{stock_data[41]}}</span>
+                            </div>
+                            <div class="stock-apply1">
+                                <span class="stock-apply-info">最低</span>
+                                <span class="stock-apply-info">{{stock_data[42]}}</span>
+                            </div>
+                            <div class="stock-apply1 individual-stock-color">
+                                <span class="stock-apply-info">振幅</span>
+                                <span class="stock-apply-info">{{stock_data[43] + '%'}}</span>
+                            </div>
+                            <div class="stock-apply1">
+                                <span class="stock-apply-info">流通市值(亿)</span>
+                                <span class="stock-apply-info">{{stock_data[44]}}</span>
+                            </div>
+                            <div class="stock-apply1 individual-stock-color">
+                                <span class="stock-apply-info">总市值(亿)</span>
+                                <span class="stock-apply-info">{{stock_data[45]}}</span>
+                            </div>
+                            <div class="stock-apply1">
+                                <span class="stock-apply-info">市净率</span>
+                                <span class="stock-apply-info">{{stock_data[46]}}</span>
+                            </div>
+                            <div class="stock-apply1 individual-stock-color">
+                                <span class="stock-apply-info">涨停价</span>
+                                <span class="stock-apply-info">{{stock_data[47]}}</span>
+                            </div>
+                            <div class="stock-apply1">
+                                <span class="stock-apply-info">跌停价</span>
+                                <span class="stock-apply-info">{{stock_data[48]}}</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -204,6 +233,7 @@
 <script>
     import SearchPlus from "./SearchPlus";
     import MyChart from "./MyChart";
+    import PieChart from "./PieChart";
     export default {
         name: "IndividualStock",
         data() {
@@ -211,6 +241,7 @@
                 img_src: '',
                 stock_num: '',
                 stock_data: null,
+                stock_data1: null,
                 show_st: false,
                 do_value: '进入',
                 talk_datas: [
@@ -267,7 +298,8 @@
         },
         components: {
             SearchPlus,
-            MyChart
+            MyChart,
+            PieChart
         },
         methods: {
             go(v) {
@@ -275,20 +307,19 @@
                 this.stock_num = v;
             },
             getStockData(value) {
-                let str = '/sina1/list=';
-                let str1 = '/gtimg/q=';
+                let str = '/gtimg/q=', _str = '/gtimg/q=ff_';
                 if(value[0] === '3' || value[0] === '0') {
                     str += 'sz';
-                    str1 += 'sz';
+                    _str += 'sz';
                 } else if(value[0] === '6') {
                     str += 'sh';
-                    str1 += 'sh';
+                    _str += 'sh';
                 } else return;
                 this.$http.get(str + value).then(v => {
-                    this.stock_data = v.data.split('"')[1].split(',');
+                    this.stock_data = v.data.split('~');
                 });
-                this.$http.get(str1 + value).then(v => {
-                    console.log('tc:',v.data.split('~'));
+                this.$http.get(_str + value).then(v => {
+                    this.stock_data1 = v.data.split('~');
                 });
             }
         },
@@ -390,13 +421,21 @@
     .stock-apply-info {
         display: inline-block;
         margin: auto 0;
+        font-size: 0.8em;
         flex: 1;
         width: 33%;
         padding-top: 5px;
     }
     .stock-apply-info-head {
-        font-size: 1.2em;
         font-weight: bold;
+        font-size: 1em;
         padding-top: 0px;
+    }
+    .stock-apply2 {
+        height: 16.6%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>
