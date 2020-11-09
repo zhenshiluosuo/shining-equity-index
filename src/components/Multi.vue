@@ -1,7 +1,8 @@
 <template>
     <div id="multi">
         <div id="m-select">
-            <SearchPlus :do_value="do_value" @searchPlus-emit="add"></SearchPlus>
+            <SearchPlus :do_value="do_value" @searchPlus-emit="add" style="width: 30%; height: 100%; position: relative; float: left;"></SearchPlus>
+            <SelectBox style="margin: 0 1%; width: 68%; height: 100%; position: relative; float: left;"></SelectBox>
         </div>
         <div id="m-show">
             <div v-for="item in this.stock_link" :key="item" class="show-cell">
@@ -13,6 +14,7 @@
 0
 <script>
     import SearchPlus from "./SearchPlus";
+    import SelectBox from "./SelectBox";
     export default {
         name: "Multi",
         data() {
@@ -24,7 +26,8 @@
             }
         },
         components: {
-            SearchPlus
+            SearchPlus,
+            SelectBox
         },
         created() {
         },
@@ -56,8 +59,10 @@
 </script>
 
 <style scoped>
-    #m-search {
-
+    #m-select {
+        width: 100%;
+        height: 5%;
+        clear: both;
     }
     .show-cell {
         float: left;

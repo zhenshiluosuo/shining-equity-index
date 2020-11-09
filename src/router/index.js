@@ -6,6 +6,7 @@ import Multi from "../components/Multi";
 import SelfSelect from "../components/SelfSelect";
 import checkbox from "../components/checkbox";
 import GoldInfo from "../components/GoldInfo";
+import NationalInfo from "../components/NationalInfo"
 
 Vue.use(VueRouter);
 
@@ -39,13 +40,16 @@ const routes = [
         path: '/Multi',
         name: 'Multi',
         component: Multi
-    }
-    ,
-    {
+    },{
         path: '/GoldInfo',
         name: 'GoldInfo',
         component: GoldInfo
-    }
+    },
+    {
+        path: '/NationalInfo',
+        name: 'NationalInfo',
+        component: NationalInfo
+    },
 ];
 
 const router = new VueRouter({

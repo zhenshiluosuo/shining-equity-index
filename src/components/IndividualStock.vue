@@ -10,6 +10,13 @@
             <div style="width: 75%; height: 100%;position: relative;float: left; box-sizing: border-box; border-right: 1px solid #2c3e50;">
                 <div id="individual-stock-show-chart">
                     <MyChart></MyChart>
+                    <div style="width: 100%; height: 100%; background: white; position: absolute; top: 0; left: 0;" v-show="show_type === true">
+                        <div id="individual-stock-show-img" ref="stockTimeImg"></div>
+                    </div>
+                    <div id="individual-stock-show-switch">
+                        <div style="cursor: pointer; position: relative; float: left; width: 50%; height: 100%; box-sizing: border-box; border-right: 1px solid #2c3e50; line-height: 1.5em;" :class="{ 'color-blue' : show_type }" @click="change_show_type(1)">分时</div>
+                        <div style="cursor: pointer; position: relative; float: left; width: 50%; height: 100%; line-height: 1.5em;"  :class="{ 'color-blue' : !show_type }" @click="change_show_type(2)">周期</div>
+                    </div>
                 </div>
                 <div id="individual-stock-show-talk">
                     <div style="width: 100%; height: 15%;display: flex;background-color: #2c3e50; color: #ffffff; border-bottom: 1px solid #00BFFF;">
@@ -32,7 +39,7 @@
             </div>
             <div style="width: 25%; height: 100%;position: relative;float: left;">
                 <div id="individual-stock-show-search">
-                    <SearchPlus :do_value="do_value" @searchPlus-emit="go"></SearchPlus>
+                    <SearchPlus :do_value="do_value" @searchPlus-emit="go" style="height: 100%; width: 100%;"></SearchPlus>
                 </div>
                 <div id="individual-stock-show-info">
                     <div style="height: 15%;width: 100%;">
@@ -243,6 +250,7 @@
                 stock_data: null,
                 stock_data1: null,
                 show_st: false,
+                show_type: false,
                 do_value: '进入',
                 talk_datas: [
                     {
@@ -296,6 +304,11 @@
                 this.img_src = 'http://image.sinajs.cn/newchart/min/n/' + jys + this.stock_num + '.gif'
             }
         },
+        updated() {
+            if(this.$route.query.num) {
+                this.$refs.stockTimeImg.style.backgroundImage = 'url(' + 'http://image.sinajs.cn/newchart/min/n/sh600000.gif' +')';
+            }
+        },
         components: {
             SearchPlus,
             MyChart,
@@ -321,11 +334,19 @@
                 this.$http.get(_str + value).then(v => {
                     this.stock_data1 = v.data.split('~');
                 });
+            },
+            change_show_type(v) {
+                if(v === 1) {
+                    this.show_type = true;
+                } else {
+                    this.show_type = false;
+                }
             }
         },
         watch: {
             show_st() {
                 this.getStockData(this.stock_num);
+                this.$refs.stockTimeImg.style.backgroundImage = 'url(' + 'http://image.sinajs.cn/newchart/min/n/sh600000.gif' +')';
             }
         }
     }
@@ -357,6 +378,7 @@
         height: 80%;
         box-sizing: border-box;
         padding: 5px;
+        position: relative;
     }
     #individual-stock-show-talk {
         width: 100%;
@@ -400,6 +422,27 @@
         border: 1px solid #2c3e50;
         border-radius: 5px;
     }
+    #individual-stock-show-img {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 100;
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        opacity: 1;
+    }
+    #individual-stock-show-switch {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 1000;
+        box-sizing: border-box;
+        border: 1px solid #2c3e50;
+        width: 6em;
+        height: 1.5em;
+    }
     .stock-apply {
         height: 20%;
         width: 100%;
@@ -437,5 +480,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .color-blue {
+        background: #1E90FF;
+        color: #ffffff;
     }
 </style>

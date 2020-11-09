@@ -58,14 +58,16 @@
 
 <style scoped>
     .SelectBox {
+        width: 100%;
+        height: 100%;
         display: block;
-        margin: 10px;
+        margin: 0;
         padding: 0;
         box-sizing: border-box;
         border: 1px solid;
         border-radius: 10px;
         overflow: hidden;
-        height: 100px;
+        clear: both;
     }
     .SelectBox li {
         display: block;

@@ -1,7 +1,7 @@
 <template>
     <div class="sp-div">
         <input class="sp-input" type="text" v-model="value" placeholder="Enter something..." />
-        <div class="sp-btn" @click="emitToFather">{{ do_value }}</div>
+        <button class="sp-btn" @click="emitToFather">{{ do_value }}</button>
         <div class="sp-show" v-show="sp_show === true">
             <ul>
                 <li v-for="item in show_data" :key="item.id" @click="add(item.value)">{{item.value + ' - ' + item.info[0]}}</li>
@@ -103,32 +103,35 @@
 
 <style scoped>
     .sp-div {
-        padding: 5px;
         text-align:left;
         position: relative;
     }
     .sp-input {
-        width: 300px;
+        display: inline-block;
+        width: 80%;
         border: 1px solid #dcdee2;
-        border-radius: 4px;
+        border-radius: 5px;
         padding: 4px 7px;
-        height: 22px;
+        height: 100%;
+        box-sizing: border-box;
     }
     .sp-btn {
         display: inline-block;
+        box-sizing: border-box;
         background-color: #eeeeee;
-        height: 30px;
-        width: 70px;
+        height: 100%;
+        width: 20%;
         border: 1px solid #dcdee2;
         vertical-align: middle;
         text-align: center;
-        line-height: 30px;
+        font-size: 100%;
+        line-height: 100%;
         font-weight: bold;
         cursor: pointer;
     }
     .sp-show {
         position: absolute;
-        width: 386px;
+        width: 80%;
         height: auto;
         top: 38px;
         border-radius: 0 0 10px 10px;
@@ -139,6 +142,7 @@
         font-family: 'Microsoft YaHei',Arial,sans-serif;
         z-index: 1;
         background: white;
+        box-sizing: border-box;
     }
     .sp-show ul {
         margin: 0;

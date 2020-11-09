@@ -36,6 +36,20 @@ module.exports = {
                 pathRewrite: {
                     '^/gtimg': '/'
                 }
+            },
+            '/gtimg1': {
+                target: 'http://data.gtimg.cn',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/gtimg1': '/'
+                }
+            },
+            '/xueqiu': {
+                target: 'https://stock.xueqiu.com',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/xueqiu': '/'
+                }
             }
         }
     }
