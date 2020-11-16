@@ -18,9 +18,17 @@
         name: "SelfSelect",
         data(){
             return {
-                stockData: [{id:0, name:'浦发银行', num:'600000'}, {id:1, name:'白云机场', num:'600004'}, {id:2, name:'东风汽车', num:'600006'}],
+                stockData: [],
                 do_value: '查询'
             }
+        },
+        created() {
+            let temps = window.localStorage.stocks.split('|');
+            temps.forEach(v => {
+                console.log(v);
+                this.stockData.push(JSON.parse(v));
+            });
+            console.log(this.stockData);
         },
         components: {
             SearchPlus,

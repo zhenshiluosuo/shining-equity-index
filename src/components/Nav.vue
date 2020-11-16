@@ -3,7 +3,7 @@
         <ul class="nav-ul">
             <li class="nav-li"><router-link to="/" class="router-link"><span>全景概况&#12288;></span></router-link></li>
             <li class="nav-li"><router-link to="NationalInfo" class="router-link"><span>国内行情&#12288;></span></router-link></li>
-            <li class="nav-li"><router-link to="NationalInfo" class="router-link"><span>国际行情&#12288;></span></router-link></li>
+            <li class="nav-li"><router-link to="InternationalInfo" class="router-link"><span>国际行情&#12288;></span></router-link></li>
             <li class="nav-li"><router-link to="GoldInfo" class="router-link"><span>黄金市场&#12288;></span></router-link></li>
             <li class="nav-li"><router-link to="IndividualStock" class="router-link"><span>个股诊断&#12288;></span></router-link></li>
             <li class="nav-li"><router-link to="SelfSelect" class="router-link"><span>我的自选&#12288;></span></router-link></li>

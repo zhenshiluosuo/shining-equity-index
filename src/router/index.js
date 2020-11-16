@@ -7,6 +7,7 @@ import SelfSelect from "../components/SelfSelect";
 import checkbox from "../components/checkbox";
 import GoldInfo from "../components/GoldInfo";
 import NationalInfo from "../components/NationalInfo"
+import InternationalInfo from "../components/InternationalInfo";
 
 Vue.use(VueRouter);
 
@@ -49,6 +50,11 @@ const routes = [
         path: '/NationalInfo',
         name: 'NationalInfo',
         component: NationalInfo
+    },
+    {
+        path: '/InternationalInfo',
+        name: 'InternationalInfo',
+        component: InternationalInfo
     },
 ];
 

@@ -19,6 +19,11 @@ export default {
     Nav,
     Header,
     Footer
+  },
+  mounted() {
+    if(!window.localStorage.stocks) {
+      window.localStorage.stocks = '{"id":0, "name":"招商银行", "num":"600036"}|{"id":1, "name":"贵州茅台", "num":"600519"}|{"id":2, "name":"中国平安", "num":"601318"}|{"id":3, "name":"万科A", "num":"000002"}|{"id":4, "name":"美的集团", "num":"000333"}|{"id":5, "name":"京东方A", "num":"000725"}|{"id":6, "name":"五粮液", "num":"000858"}|{"id":7, "name":"东方财富", "num":"300059"}|{"id":8, "name":"宁德时代", "num":"300750"}|{"id":9, "name":"寒武纪-U", "num":"688256"}|{"id":10, "name":"中芯国际-U", "num":"688981"}';
+    }
   }
 }
 </script>
@@ -52,6 +57,7 @@ export default {
   .main-view {
     flex: 8;
     height: 100%;
+    position: relative;
   }
   ul {
     list-style: none;

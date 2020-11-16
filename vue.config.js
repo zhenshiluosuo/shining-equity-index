@@ -50,6 +50,20 @@ module.exports = {
                 pathRewrite: {
                     '^/xueqiu': '/'
                 }
+            },
+            '/gd': {
+                target: 'https://restapi.amap.com/v3',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/gd': '/'
+                }
+            },
+            '/sohu': {
+                target: 'http://pv.sohu.com',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/sohu': '/'
+                }
             }
         }
     }
