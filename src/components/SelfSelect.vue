@@ -25,10 +25,8 @@
         created() {
             let temps = window.localStorage.stocks.split('|');
             temps.forEach(v => {
-                console.log(v);
                 this.stockData.push(JSON.parse(v));
             });
-            console.log(this.stockData);
         },
         components: {
             SearchPlus,

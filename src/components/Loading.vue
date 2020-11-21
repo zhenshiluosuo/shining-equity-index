@@ -1,6 +1,6 @@
 <template>
     <div class="loading">
-        <div class="box">
+        <div class="loader-box">
             <div class="loader"></div>
         </div>
     </div>
@@ -17,8 +17,9 @@
         position: absolute;
         width: 100%;
         height: 100%;
+        z-index: 1000;
     }
-    .box {
+    .loader-box {
         display: block;
         width: 300px;
         height: 300px;

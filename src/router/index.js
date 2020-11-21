@@ -5,7 +5,7 @@ import IndividualStock from "../components/IndividualStock";
 import Multi from "../components/Multi";
 import SelfSelect from "../components/SelfSelect";
 import checkbox from "../components/checkbox";
-import GoldInfo from "../components/GoldInfo";
+import FuturesInfo from "../components/FuturesInfo";
 import NationalInfo from "../components/NationalInfo"
 import InternationalInfo from "../components/InternationalInfo";
 
@@ -42,9 +42,9 @@ const routes = [
         name: 'Multi',
         component: Multi
     },{
-        path: '/GoldInfo',
-        name: 'GoldInfo',
-        component: GoldInfo
+        path: '/FuturesInfo',
+        name: 'FuturesInfo',
+        component: FuturesInfo
     },
     {
         path: '/NationalInfo',

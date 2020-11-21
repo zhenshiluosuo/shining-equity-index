@@ -213,7 +213,7 @@
                         }
                     },
                     legend: {
-                        data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30']
+                        data: ['日K', 'MA5', 'MA10', 'MA30', 'MA180']
                     },
                     grid: {
                         left: '10%',
@@ -367,18 +367,18 @@
                             }
                         },
                         {
-                            name: 'MA20',
+                            name: 'MA30',
                             type: 'line',
-                            data: calculateMA(20),
+                            data: calculateMA(30),
                             smooth: true,
                             lineStyle: {
                                 opacity: 0.5
                             }
                         },
                         {
-                            name: 'MA30',
+                            name: 'MA180',
                             type: 'line',
-                            data: calculateMA(30),
+                            data: calculateMA(180),
                             smooth: true,
                             lineStyle: {
                                 opacity: 0.5

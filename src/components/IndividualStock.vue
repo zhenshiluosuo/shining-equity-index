@@ -9,7 +9,7 @@
         <div v-else style="width: 100%; height: 100%;">
             <div style="width: 75%; height: 100%;position: relative;float: left; box-sizing: border-box; border-right: 1px solid #2c3e50;">
                 <div id="individual-stock-show-chart">
-                    <MyChart></MyChart>
+                    <MyChart :stock_num="stock_num"></MyChart>
                     <div style="width: 100%; height: 100%; background: white; position: absolute; top: 0; left: 0;" v-show="show_type === true">
                         <div id="individual-stock-show-img" ref="stockTimeImg"></div>
                     </div>

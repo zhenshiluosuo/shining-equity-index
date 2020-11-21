@@ -30,6 +30,13 @@ module.exports = {
                     '^/sina2' : '/'
                 }
             },
+            '/sina3': {
+                target: 'http://stock2.finance.sina.com.cn/',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/sina3' : '/'
+                }
+            },
             '/gtimg': {
                 target: 'http://qt.gtimg.cn',
                 changeOrigin: true,
