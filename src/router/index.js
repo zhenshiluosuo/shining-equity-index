@@ -8,6 +8,7 @@ import checkbox from "../components/checkbox";
 import FuturesInfo from "../components/FuturesInfo";
 import NationalInfo from "../components/NationalInfo"
 import InternationalInfo from "../components/InternationalInfo";
+import StockFilter from "../components/StockFilter"
 
 Vue.use(VueRouter);
 
@@ -56,6 +57,11 @@ const routes = [
         name: 'InternationalInfo',
         component: InternationalInfo
     },
+    {
+        path: '/StockFilter',
+        name: 'StockFilter',
+        component: StockFilter
+    }
 ];
 
 const router = new VueRouter({

@@ -9,7 +9,7 @@
         <div v-else style="width: 100%; height: 100%;">
             <div style="width: 75%; height: 100%;position: relative;float: left; box-sizing: border-box; border-right: 1px solid #2c3e50;">
                 <div id="individual-stock-show-chart">
-                    <MyChart :stock_num="stock_num"></MyChart>
+                    <MyChart :data="chart_data" :load_finish="chart_data_flag"></MyChart>
                     <div style="width: 100%; height: 100%; background: white; position: absolute; top: 0; left: 0;" v-show="show_type === true">
                         <div id="individual-stock-show-img" ref="stockTimeImg"></div>
                     </div>
@@ -44,12 +44,12 @@
                 <div id="individual-stock-show-info">
                     <div style="height: 15%;width: 100%;">
                         <div style="height: 40%;width: 100%; vertical-align:middle;">
-                            <span style="display: inline-block; width: 50%; height: 1.5em; font-size: 1.5em; line-height: 1.5em;">{{stock_num}}</span>
-                            <span style="display: inline-block; width: 50%; height: 1.5em; font-size: 1.5em; line-height: 1.5em;">{{stock_data[1]}}</span>
+                            <span style="display: inline-block; width: 50%; height: 1em; font-size: 1.5em; line-height: 1.5em;">{{stock_num}}</span>
+                            <span style="display: inline-block; width: 50%; height: 1.5em; font-size: 1.5em; line-height: 1.5em; color: #FF8C00;">{{stock_data[1]}}</span>
                         </div>
-                        <div style="height: 60%; width: 100%;">
+                        <div style="height: 60%; width: 100%; font-size: 1.25em; font-weight: bold;" :class="{'color-green': color_type === 1, 'color-red': color_type === 2}">
                             <div style="display: inline-block; width: 50%;">
-                                <span>当前价格</span><br>
+                                <span style="color: #000000; font-weight: normal; font-size: 0.8em;">当前价格</span><br>
                                 <span>{{stock_data[3]}}</span>
                             </div>
                             <div style="display: inline-block; width: 50%;">
@@ -252,6 +252,10 @@
                 show_st: false,
                 show_type: false,
                 do_value: '进入',
+                chart_datax: [],
+                chart_data: [],
+                chart_data_flag: false,
+                color_type: 0,
                 talk_datas: [
                     {
                         id: 0,
@@ -294,19 +298,24 @@
         created() {
             if(this.$route.query.num) {
                 this.stock_num = this.$route.query.num;
+
+                let chart_stock_num;
+                if(this.stock_num[0] === '0' || this.stock_num[0] === '3') {
+                    chart_stock_num = '1' + this.stock_num;
+                } else {
+                    chart_stock_num = '0' + this.stock_num;
+                }
+                this.getData(2020, chart_stock_num);
+
                 this.getStockData(this.stock_num);
+                this.getImg();
             } else {
                 this.show_st = true;
-            }
-            let jys = this.stock_num.slice(0,1);
-            jys = (jys === '0' || jys === '3') ? 'sz' : (jys === '6' ? 'sh' : '');
-            if (jys !== '') {
-                this.img_src = 'http://image.sinajs.cn/newchart/min/n/' + jys + this.stock_num + '.gif'
             }
         },
         updated() {
             if(this.$route.query.num) {
-                this.$refs.stockTimeImg.style.backgroundImage = 'url(' + 'http://image.sinajs.cn/newchart/min/n/sh600000.gif' +')';
+                this.getImg();
             }
         },
         components: {
@@ -315,6 +324,43 @@
             PieChart
         },
         methods: {
+            getImg() {
+                let jys = this.stock_num.slice(0,1);
+                jys = (jys === '0' || jys === '3') ? 'sz' : (jys === '6' ? 'sh' : '');
+                if (jys !== '') {
+                    this.img_src = 'http://image.sinajs.cn/newchart/min/n/' + jys + this.stock_num + '.gif';
+                    this.$refs.stockTimeImg.style.backgroundImage = 'url(' + this.img_src +')';
+                }
+            },
+            getData(year, num) {
+                console.log(num);
+                this.$http.get('/api1' + '/data/hs/kline/day/history/' + year + '/' + num + '.json').then(v => {
+                    this.chart_datax.unshift(...v.data.data);
+                    this.getData(year - 1, num);
+                }).catch(() => {
+                    this.processData();
+                });
+            },
+            processData() {
+                //数据模型 time0 open1 close2 min3 max4 vol5 tag6 macd7 dif8 dea9
+                //['2015-10-19',18.56,18.25,18.19,18.56,55.00,0,-0.00,0.08,0.09]
+                // ["20020409", 10.51, 10.66, 10.88, 10.51, 414108831, 46.03]
+                let macd = 0, ema12 = 0, ema26 = 0, dif = 0, dea = 0, time = '', close = 0.0;
+                for(let item of this.chart_datax) {
+                    time = item[0].substring(0, 4) + '-' + item[0].substring(4, 6) + '-' + item[0].substring(6, 8);
+                    close = parseFloat(item[2]);
+                    ema12 = (11 / 13 * ema12 + 2 / 13 * close).toFixed(2);
+                    ema26 = (25 / 27 * ema26 + 2 / 27 * close).toFixed(2);
+                    dif = (ema12 - ema26).toFixed(2);
+                    dea = (8 / 10 * dea + 2 / 10 * dif).toFixed(2);
+                    macd = ((dif - dea) * 2).toFixed(2);
+                    this.chart_data.push([time, parseFloat(item[1]), close, parseFloat(item[4]), parseFloat(item[3]), parseFloat(item[5]), 0, parseFloat(macd), parseFloat(dif), parseFloat(dea)]);
+                }
+                this.chart_data[0][6] = 1;
+                this.chart_data[this.chart_data.length - 1][6] = 1;
+                this.chart_data_flag = true;
+                console.log(this.chart_data, this.chart_data_flag);
+            },
             go(v) {
                 this.show_st = false;
                 this.stock_num = v;
@@ -330,6 +376,11 @@
                 } else return;
                 this.$http.get(str + value).then(v => {
                     this.stock_data = v.data.split('~');
+                    if(parseFloat(this.stock_data[3]) - parseFloat(this.stock_data[4]) < 0.0) {
+                        this.color_type = 1;
+                    } else if(parseFloat(this.stock_data[3]) - parseFloat(this.stock_data[4]) > 0.0) {
+                        this.color_type = 2;
+                    }
                 });
                 this.$http.get(_str + value).then(v => {
                     this.stock_data1 = v.data.split('~');
@@ -484,5 +535,11 @@
     .color-blue {
         background: #1E90FF;
         color: #ffffff;
+    }
+    .color-green {
+        color: #32CD32;
+    }
+    .color-red {
+        color: #FF0000;
     }
 </style>

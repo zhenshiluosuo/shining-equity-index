@@ -1,6 +1,6 @@
 <template>
     <div class="my-chart" ref="mychart">
-        <Loading v-if="!load_flag"></Loading>
+        <Loading v-if="!load_finish"></Loading>
     </div>
 </template>
 
@@ -10,54 +10,24 @@
         name: "MyChart",
         data() {
             return {
-                datax: [],
-                data: [],
-                load_flag: false
+
             }
         },
         props: [
-            'stock_num'
+            'data',
+            'load_finish'
         ],
         components: {
             Loading
         },
         created() {
-            if(this.stock_num[0] === '0' || this.stock_num[0] === '3') {
-                this.stock_num = '1' + this.stock_num;
-            } else {
-                this.stock_num = '0' + this.stock_num;
+        },
+        updated() {
+            if(this.data.length) {
+                this.draw();
             }
-            this.getData(2020, this.stock_num);
         },
         methods: {
-            getData(year, num) {
-                this.$http.get('/api1' + '/data/hs/kline/day/history/' + year + '/' + num + '.json').then(v => {
-                    this.datax.unshift(...v.data.data);
-                    this.getData(year - 1, num);
-                }).catch(() => {
-                    this.processData();
-                });
-            },
-            processData() {
-                //数据模型 time0 open1 close2 min3 max4 vol5 tag6 macd7 dif8 dea9
-                //['2015-10-19',18.56,18.25,18.19,18.56,55.00,0,-0.00,0.08,0.09]
-                // ["20020409", 10.51, 10.66, 10.88, 10.51, 414108831, 46.03]
-                let macd = 0, ema12 = 0, ema26 = 0, dif = 0, dea = 0, time = '', close = 0.0;
-                for(let item of this.datax) {
-                    time = item[0].substring(0, 4) + '-' + item[0].substring(4, 6) + '-' + item[0].substring(6, 8);
-                    close = parseFloat(item[2]);
-                    ema12 = (11 / 13 * ema12 + 2 / 13 * close).toFixed(2);
-                    ema26 = (25 / 27 * ema26 + 2 / 27 * close).toFixed(2);
-                    dif = (ema12 - ema26).toFixed(2);
-                    dea = (8 / 10 * dea + 2 / 10 * dif).toFixed(2);
-                    macd = ((dif - dea) * 2).toFixed(2);
-                    this.data.push([time, parseFloat(item[1]), close, parseFloat(item[4]), parseFloat(item[3]), parseFloat(item[5]), 0, parseFloat(macd), parseFloat(dif), parseFloat(dea)]);
-                }
-                this.data[0][6] = 1;
-                this.data[this.data.length - 1][6] = 1;
-                this.load_flag = true;
-                this.draw();
-            },
             draw() {
                 //数据模型 time0 open1 close2 min3 max4 vol5 tag6 macd7 dif8 dea9
                 //['2015-10-19',18.56,18.25,18.19,18.56,55.00,0,-0.00,0.08,0.09]
@@ -365,12 +335,16 @@
                 let myChart = this.$echarts.init(this.$refs.mychart);
                 // 使用刚指定的配置项和数据显示图表。
                 myChart.setOption(option);
+                this.load_flag = true;
             }
         },
         watch: {
             screenWidth() {
-                console.log('screenWidth change');
+                console.log('screenWidth changed');
                 this.$refs.mychart.resize();
+            },
+            load_finish() {
+                console.log('load_finish changed', this.load_finish);
             }
         }
     }

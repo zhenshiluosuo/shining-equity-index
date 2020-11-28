@@ -8,6 +8,7 @@
             <li class="nav-li"><router-link to="IndividualStock" class="router-link"><span>个股诊断&#12288;></span></router-link></li>
             <li class="nav-li"><router-link to="SelfSelect" class="router-link"><span>我的自选&#12288;></span></router-link></li>
             <li class="nav-li"><router-link to="Multi" class="router-link"><span>多股同屏&#12288;></span></router-link></li>
+            <li class="nav-li"><router-link to="StockFilter" class="router-link"><span>选股功能&#12288;></span></router-link></li>
             <li class="nav-li"><router-link to="" class="router-link"><span>直播讨论&#12288;></span></router-link></li>
             <li style="width: 100%;height: 1px;background: red;"></li>
             <li class="nav-li" style="font-size: 16px"><span>使用须知&#12288;></span></li>
@@ -26,7 +27,7 @@
     .nav {
         flex: 1;
         height: 100%;
-        background: #ddd;
+        background: #DCDCDC;
         border-right: 1px solid black;
         box-sizing: border-box;
     }

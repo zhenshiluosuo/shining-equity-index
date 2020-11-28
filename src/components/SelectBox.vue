@@ -65,7 +65,7 @@
         padding: 0;
         box-sizing: border-box;
         border: 1px solid;
-        border-radius: 10px;
+        border-radius: 5px;
         overflow: hidden;
         clear: both;
     }

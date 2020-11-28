@@ -25,10 +25,10 @@
                     {{ item[4] }}
                 </span>
                 <span class="stockTable-span" :class="{ 'color-red': parseFloat(item[4]) -  parseFloat(item[3]) > 0, 'color-green': parseFloat(item[4]) -  parseFloat(item[3]) < 0 }">
-                    {{ (Math.abs(parseFloat(item[4]) -  parseFloat(item[3])) / item[3] * 100).toFixed(2) + '%' }}
+                    {{((parseFloat(item[4]) -  parseFloat(item[3])) / item[3] * 100).toFixed(2) + '%' }}
                 </span>
                 <span class="stockTable-span" :class="{ 'color-red': parseFloat(item[4]) -  parseFloat(item[3]) > 0, 'color-green': parseFloat(item[4]) -  parseFloat(item[3]) < 0 }">
-                    {{ Math.abs(parseFloat(item[4]) -  parseFloat(item[3])).toFixed(2) }}
+                    {{ (parseFloat(item[4]) -  parseFloat(item[3])).toFixed(2) }}
                 </span>
                 <span class="stockTable-span">{{ item[2] }}</span>
                 <span class="stockTable-span">{{ item[3] }}</span>
@@ -135,6 +135,7 @@
         color: #ffffff;
     }
     .stockTable-li {
+        box-sizing: border-box;
         margin: 0;
         padding: 0;
         border: 0;
@@ -142,6 +143,9 @@
         display: flex;
         flex-direction: row;
         cursor: pointer;
+    }
+    .stockTable-li:hover {
+        border-bottom: 1px solid white;
     }
     .stockTable-span {
         display: inline-block;
