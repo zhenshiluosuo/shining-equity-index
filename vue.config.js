@@ -1,4 +1,14 @@
 module.exports = {
+    pwa: {
+        iconPaths: {
+            favicon64: 'favicon.ico',
+            favicon32: 'favicon.ico',
+            favicon16: 'favicon.ico',
+            appleTouchIcon: 'favicon.ico',
+            maskIcon: 'favicon.ico',
+            msTileImage: 'favicon.ico'
+        }
+    },
     devServer: {
         publicPath: process.env.NODE_ENV === 'development' ? '/' : './',
         proxy: {
@@ -70,6 +80,13 @@ module.exports = {
                 changeOrigin: true,
                 pathRewrite: {
                     '^/sohu': '/'
+                }
+            },
+            '/local': {
+                target: 'http://localhost:8082',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/local': '/'
                 }
             }
         }

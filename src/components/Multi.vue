@@ -2,10 +2,10 @@
   <div id="multi">
     <div id="m-select">
       <SearchPlus  :do_value="do_value"  @searchPlus-emit="add" style="width: 30%; height: 100%; position: relative; float: left;"></SearchPlus>
-      <SelectBox style="margin: 0 1%; width: 60%; height: 100%; position: relative; float: left;"></SelectBox>
-      <!--            <select v-model="selected"  @change="getStyle()">-->
-      <!--              <option v-for="item in items" :key="item.value" >{{item.value}}</option>-->
-      <!--            </select>-->
+      <div style="height: 100%; width: 10%; position: relative; float: left; padding: 0 5px; box-sizing: border-box;">
+        <button style="height: 100%; width: 100%; font-size: 1em; letter-spacing: 0.2em; background: #fffaf0; border-radius: 5px;" @click="() => {box_show = !box_show;}">{{box_txt}}</button>
+        <SelectBox id="m-selectBox"  :selectData="stock_data" v-show="box_show" @cellClick="selectBoxClick"></SelectBox>
+      </div>
       <div @mouseover="windowSelected=true" @mouseleave="windowSelected=false" class="windowNumber">
         <span>窗口最大数量:{{selected}}</span>
         <ul v-show="windowSelected">
@@ -16,7 +16,7 @@
             <button @click="getStyle(6)">6</button>
           </li>
           <li>
-            <button @click="getStyle(12)">12</button>
+            <button @click="getStyle(8)">8</button>
           </li>
         </ul>
       </div>
@@ -27,12 +27,12 @@
             @dragover.prevent="handleDragOver($event, item)"
             @drop="handleDrop($event, item)"
             @dragend="handleDragEnd($event, item)" >
-        <img :src="item" width="100%" height="100%">
+        <img :src="item" style="width: auto;height: auto;max-width: 100%;max-height: 100%;">
       </div>
     </transition-group>
   </div>
 </template>
-0
+
 <script>
 import SearchPlus from "./SearchPlus";
 import SelectBox from "./SelectBox";
@@ -43,6 +43,10 @@ export default {
       stocks: [],
       stock_name: [],
       stock_link: [],
+      local_stock_data: [],
+      stock_data: [],
+      box_show: false,
+      box_txt: '自选股窗口',
       do_value: '添加',
       dragging: null,
       items:[{text:'4',value:4},{text:'6',value:6},{text:'8',value:8}],
@@ -57,8 +61,27 @@ export default {
     SelectBox
   },
   created() {
+    let temps = window.localStorage.stocks.split('|'), promises = [];
+    temps.forEach(v => {
+      let value = JSON.parse(v).num, str = '/gtimg/q=';
+      if(value[0] === '3' || value[0] === '0') {
+        str += 'sz';
+      } else if(value[0] === '6') {
+        str += 'sh';
+      }
+      promises.push(this.$http.get(str + value));
+    });
+    Promise.all(promises).then(v => {
+      v.forEach(v => {
+        let temp = v.data.split('~');
+        this.stock_data.push([temp[2], temp[3], temp[31], temp[32]]);
+      });
+    })
   },
   methods: {
+    selectBoxClick(value) {
+      this.add(value);
+    },
     getStyle(value){
       this.windowSelected=false;
       console.log(typeof value,value)
@@ -79,7 +102,7 @@ export default {
           this.total=this.stock_link.length
           console.log(this.stock_link)
           break;
-        case 12:
+        case 8:
           this.showCell='show-cell3';
           break;
         default:
@@ -175,10 +198,11 @@ select{
   width: 100%;
   height: 5%;
   clear: both;
+  position: relative;
 }
 .container {
-  width: 1400px;
-  height: 500px;
+  width: 100%;
+  height: 95%;
   display:flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -187,8 +211,7 @@ select{
 }
 .show-cell1 {
   height: 48%;
-  margin: 15px 100px 0 100px;
-  flex-basis:32%;
+  flex-basis:50%;
   flex-grow:0;
   flex-shrink:1;
 
@@ -218,9 +241,8 @@ div.windowNumber > span{
   padding-right: 7px;
   font-family: 华文行楷;
   color: white;
-  background-color: black;
+  background-color: #00a4ff;
   border: 1px solid;
-  border-radius: 10px;
 }
 div.windowNumber ul{
   margin: 0;
@@ -234,6 +256,13 @@ div.windowNumber button{
   cursor:pointer;
   width: 100%;
 }
-
-
+#m-selectBox {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 10;
+  width: 200%;
+  height: 20em;
+  background: #ffffff;
+}
 </style>

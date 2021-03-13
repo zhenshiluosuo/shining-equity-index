@@ -55,7 +55,6 @@
                         deas: deas
                     };
                 }
-
 //分段计算
                 function fenduans(){
                     var markLineData = [];
@@ -334,7 +333,7 @@
                 };
                 let myChart = this.$echarts.init(this.$refs.mychart);
                 // 使用刚指定的配置项和数据显示图表。
-                myChart.setOption(option);
+                myChart.setOption(option, true);
                 this.load_flag = true;
             }
         },
@@ -344,7 +343,7 @@
                 this.$refs.mychart.resize();
             },
             load_finish() {
-                console.log('load_finish changed', this.load_finish);
+                console.log('load_finish changed', this.load_finish, this.data);
             }
         }
     }

@@ -28,7 +28,6 @@
                 for(let item of v.data) {
                     this.data.push([item[0], parseFloat(item[1]), parseFloat(item[2]), parseFloat(item[3]), parseFloat(item[4]), parseFloat(item[5])]);
                 }
-                console.log(this.data);
                 this.draw();
             });
         },

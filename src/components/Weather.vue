@@ -48,21 +48,21 @@
                 });
             },
             setImgUrl(){
-                const weather=this.weather_data.weather
-                console.log(weather.indexOf('晴'))
+                const weather=this.weather_data.weather;
+                console.log(weather.indexOf('晴'));
                 if (weather.indexOf('晴')!==-1)
                     this.imgurl = require('../assets/weather_icon_400/icon__0d.png');
                 else if(weather.indexOf('云')!==-1||weather.indexOf('阴')!==-1)
                     this.imgurl = require('../assets/weather_icon_400/icon__2.png');
                 else if(weather.indexOf('雨')!==-1)
-                    this.imgurl = require('../assets/weather_icon_400/icon__9.png')
+                    this.imgurl = require('../assets/weather_icon_400/icon__9.png');
                 else if(weather.indexOf('雪')!==-1)
-                    this.imgurl = require('../assets/weather_icon_400/icon__17.png')
+                    this.imgurl = require('../assets/weather_icon_400/icon__17.png');
                 else if(weather.indexOf('沙')!==-1)
-                    this.imgurl = require('../assets/weather_icon_400/icon__20.png')
+                    this.imgurl = require('../assets/weather_icon_400/icon__20.png');
                 else
-                    this.imgurl = require('../assets/weather_icon_400/icon__32.png')
-                console.log(this.imgurl)
+                    this.imgurl = require('../assets/weather_icon_400/icon__32.png');
+                console.log(this.imgurl);
             }
         },
 

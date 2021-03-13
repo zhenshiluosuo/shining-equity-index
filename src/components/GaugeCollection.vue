@@ -41,10 +41,11 @@
       height: 100%;
       width: 100%;
       border: 1px solid #2c3e50;
+      box-sizing: border-box;
     }
     .gauge-cell {
       height: 33.33%;
-      width: 100%;
+      width: 99%;
     }
     .close-window1 {
       position: absolute;

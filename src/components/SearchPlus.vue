@@ -17,7 +17,8 @@ export default {
     return {
       sp_show: false,
       value: '',
-      show_data: null
+      show_data: null,
+      show_time: null
     }
   },
   props: [
@@ -124,7 +125,7 @@ export default {
 .sp-btn {
   display: inline-block;
   box-sizing: border-box;
-  background-color: #eeeeee;
+  background-color: #fffaf0;
   height: 100%;
   width: 20%;
   border: 1px solid #dcdee2;
