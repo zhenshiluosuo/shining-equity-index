@@ -1,19 +1,23 @@
+       
 <template>
-    <div id="national-info">
-        <div id="national-info-imgs">
-            <div class="national-info-img" ref="img1"></div>
-            <div class="national-info-img" ref="img2"></div>
-            <div class="national-info-img" ref="img3"></div>
-        </div>
-        <div id="national-info-tables">
-            <MiniStockTable :stock_data_list="stock_list1" class="national-info-table"></MiniStockTable>
-            <MiniStockTable :stock_data_list="stock_list2" class="national-info-table"></MiniStockTable>
-            <MiniStockTable :stock_data_list="stock_list3" class="national-info-table"></MiniStockTable>
+    <div>
+        <Loading v-if="loading"></Loading>
+        <div id="national-info" v-else>
+            <div id="national-info-imgs">
+                <img class="national-info-img" src="http://image.sinajs.cn/newchart/min/n/sh000001.gif" alt="">
+                <img class="national-info-img" src="http://image.sinajs.cn/newchart/min/n/sz399001.gif" alt="">
+                <img class="national-info-img" src="http://image.sinajs.cn/newchart/min/n/sz399006.gif" alt="">
+            </div>
+            <div id="national-info-tables">
+                <MiniStockTable :stock_data_list="stock_list1" class="national-info-table"></MiniStockTable>
+                <MiniStockTable :stock_data_list="stock_list2" class="national-info-table"></MiniStockTable>
+                <MiniStockTable :stock_data_list="stock_list3" class="national-info-table"></MiniStockTable>
+            </div>
         </div>
     </div>
 </template>
-
 <script>
+    import Loading from "./Loading";
     import MiniStockTable from "./MiniStockTable";
     export default {
         name: "NationalInfo",
@@ -21,11 +25,13 @@
             return {
                 stock_list1: [],
                 stock_list2: [],
-                stock_list3: []
+                stock_list3: [],
+                loading:true
             }
         },
         components: {
-            MiniStockTable
+            MiniStockTable,
+            Loading
         },
         created() {
             let promises = [[], [], []];
@@ -64,16 +70,8 @@
                         this.stock_list3 = this.stock_list3.slice(0, 21);
                     });
                 });
-            });
+            }).then(() => this.loading=false);
         },
-        updated() {
-            this.$refs.img1.style.backgroundImage = 'url(' + 'http://image.sinajs.cn/newchart/min/n/sh000001.gif' +')';
-            this.$refs.img2.style.backgroundImage = 'url(' + 'http://image.sinajs.cn/newchart/min/n/sz399001.gif' +')';
-            this.$refs.img3.style.backgroundImage = 'url(' + 'http://image.sinajs.cn/newchart/min/n/sz399006.gif' +')';
-        },
-        methods: {
-
-        }
     }
 </script>
 
@@ -88,9 +86,7 @@
         display: flex;
     }
     .national-info-img {
-        flex: 1;
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
+        flex-grow: 1;
     }
     #national-info-tables {
         width: 100%;
