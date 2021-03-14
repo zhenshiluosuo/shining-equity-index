@@ -9,6 +9,7 @@ Vue.prototype.$echarts = echarts;
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
 new Vue({
+  
   router,
   store,
   render: h => h(App),
