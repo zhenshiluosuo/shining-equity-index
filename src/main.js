@@ -4,7 +4,7 @@ import router from './router'
 import App from './App.vue';
 import axios from 'axios';
 import echarts from 'echarts'
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true ;
 Vue.prototype.$echarts = echarts;
 Vue.prototype.$http = axios;
 Vue.config.productionTip = false;
