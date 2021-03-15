@@ -26,7 +26,8 @@
                 stock_list1: [],
                 stock_list2: [],
                 stock_list3: [],
-                loading:true
+                loading:true,
+                imgSrc:'http://image.sinajs.cn/newchart/min/n/sh000001.gif'
             }
         },
         components: {
@@ -87,6 +88,7 @@
     }
     .national-info-img {
         flex-grow: 1;
+        object-fit:contain
     }
     #national-info-tables {
         width: 100%;
